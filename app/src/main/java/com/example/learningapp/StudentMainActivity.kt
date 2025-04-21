@@ -35,17 +35,17 @@ class StudentMainActivity : BaseLearningActivity() {
 
     private fun setupListeners() {
         binding.btnSendAnswer.setOnClickListener {
-            val input = binding.edtAnswer.editText?.text?.toString()
-            val amount = input?.toIntOrNull() ?: 0
+            val studentName = binding.edtAnswer.editText?.text?.toString()?.trim() ?: ""
             binding.btnSendAnswer.visibility = View.INVISIBLE
 
-            if (amount > 0) {
+            if (studentName.isNotBlank()) {
                 onSuccess()
             } else {
                 onError()
             }
         }
     }
+
 
     private fun loadQuestions() {
         addQuestion("כמה זה 3 + 4?")
